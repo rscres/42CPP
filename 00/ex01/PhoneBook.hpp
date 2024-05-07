@@ -4,12 +4,13 @@
 # include "Contact.hpp"
 
 class PhoneBook {
-	Contact contacts[8];
+	private:
+		Contact contacts[8];
 
 	public:
 
-		void addContact(Contact contact[8]);
-		// void searchContact();
+		void addContact();
+		void searchContact();
 		// void printContacts();
 };
 
