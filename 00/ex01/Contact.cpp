@@ -6,7 +6,7 @@
 /*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 22:22:27 by renato            #+#    #+#             */
-/*   Updated: 2024/05/06 23:54:27 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/07 22:53:07 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,16 @@ std::string formatString(std::string str)
     }
     else if (len < 10)
     {
-        while (len < 10)
-            str.insert(len, " ");
+        while (len++ < 10)
+            str.insert(0, " ");
     }
     return str;
 }
 
 void Contact::printContact(int index)
 {
-    std::cout << index << " | "
-              << formatString(this->firstName) << " | "
-              << formatString(this->lastName) << " | "
-              << formatString(this->nickname) << std::endl;
+    std::cout << "|" << index << "|"
+              << formatString(this->firstName) << "|"
+              << formatString(this->lastName) << "|"
+              << formatString(this->nickname) << "|" << std::endl;
 }

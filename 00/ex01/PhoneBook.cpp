@@ -6,12 +6,13 @@
 /*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 11:14:48 by renato            #+#    #+#             */
-/*   Updated: 2024/05/06 23:44:47 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/07 22:49:43 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include <iostream>
 #include <string>
+#include <sstream>
 #include "PhoneBook.hpp"
 
 std::string getInfo(std::string info)
@@ -47,7 +48,7 @@ void PhoneBook::addContact()
             return;
         }
     }
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < 7; i++)
     {
         int j = i + 1;
         this->contacts[i] = this->contacts[j];
@@ -64,12 +65,15 @@ void PhoneBook::searchContact()
     index = getInfo("Enter the index of the contact you want to see: ");
     if (index.length() == 1 && index[0] >= '0' && index[0] <= '7')
     {
-        if (this->contacts[index[0] - '0'].getFirstName() == "")
+        std::stringstream ss(index);
+        int i;
+        ss >> i;
+        if (this->contacts[i].getFirstName() == "")
         {
             std::cout << "No contact at this index" << std::endl;
             return;
         }
-        this->contacts[index[0] - '0'].printContact(index[0] - '0');
+        this->contacts[i].printContact(i);
     }
     else
     {
