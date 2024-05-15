@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/08 21:26:49 by renato            #+#    #+#             */
-/*   Updated: 2024/05/15 14:49:00 by rseelaen         ###   ########.fr       */
+/*   Created: 2024/05/15 15:31:06 by rseelaen          #+#    #+#             */
+/*   Updated: 2024/05/15 16:00:49 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
+#include <iostream>
 
-int main(void) {
-	int znum = 5;
-
-    Zombie *horde = zombieHorde(znum, "Mob");
-	for (int i = 0; i < znum; i++) {
-		horde[i].announce();
-	}
-    deleteZombieHorde(horde);
-
-	znum = 10;
-	Zombie *horde = zombieHorde(znum, "Mob");
-	for (int i = 0; i < znum; i++) {
-		horde[i].announce();
-	}
-    deleteZombieHorde(horde);
-    return (0);
+Weapon::Weapon(void) {
+	this->type = "";
 }
+
+Weapon::~Weapon(void) {
+}
+
+void Weapon::setType(std::string type) {
+	this->type = type;
+}
+
+std::string const &Weapon::getType(void) {
+	return this->type;
+}
+

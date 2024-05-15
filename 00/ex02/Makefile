@@ -2,18 +2,16 @@
 CC = c++
 
 # program name
-NAME = zombie
+NAME = account
 
 # compiler flags
 CFLAGS  = -g -Wall -Wextra -Werror -std=c++98
 
-SRC =	main.cpp \
-		Zombie.cpp \
-		newZombie.cpp \
-		randomChump.cpp
+SRC =	tests.cpp \
+		Account.cpp
 
 # includes
-INC =	Zombie.hpp 
+INC =	Account.hpp
 
 # obj
 OBJ = $(SRC:.cpp=.o)
@@ -21,7 +19,7 @@ OBJ = $(SRC:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@

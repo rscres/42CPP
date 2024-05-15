@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/08 21:26:49 by renato            #+#    #+#             */
-/*   Updated: 2024/05/15 14:49:00 by rseelaen         ###   ########.fr       */
+/*   Created: 2024/05/15 15:28:01 by rseelaen          #+#    #+#             */
+/*   Updated: 2024/05/15 15:30:58 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef WEAPON_H
+# define WEAPON_H
 
-int main(void) {
-	int znum = 5;
+# include <string>
 
-    Zombie *horde = zombieHorde(znum, "Mob");
-	for (int i = 0; i < znum; i++) {
-		horde[i].announce();
-	}
-    deleteZombieHorde(horde);
+class Weapon {
+	private:
+		std::string type;
 
-	znum = 10;
-	Zombie *horde = zombieHorde(znum, "Mob");
-	for (int i = 0; i < znum; i++) {
-		horde[i].announce();
-	}
-    deleteZombieHorde(horde);
-    return (0);
-}
+	public:
+		Weapon(void);
+		~Weapon(void);
+		void setType(std::string type);
+		std::string const &getType(void);
+};
+
+#endif

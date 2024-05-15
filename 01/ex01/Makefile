@@ -2,7 +2,7 @@
 CC = c++
 
 # program name
-NAME = zombie
+NAME = horde
 
 # compiler flags
 CFLAGS  = -g -Wall -Wextra -Werror -std=c++98
@@ -10,9 +10,6 @@ CFLAGS  = -g -Wall -Wextra -Werror -std=c++98
 SRC =	main.cpp \
 		Zombie.cpp \
 		zombieHorde.cpp
-
-# includes
-INC =	Zombie.hpp 
 
 # obj
 OBJ = $(SRC:.cpp=.o)

@@ -1,5 +1,5 @@
 # compiler
-CC = g++
+CC = c++
 
 # program name
 NAME = phonebook
@@ -10,10 +10,6 @@ CFLAGS  = -g -Wall -Wextra -Werror -std=c++98
 SRC =	main.cpp \
 		PhoneBook.cpp \
 		Contact.cpp
-
-# includes
-INC =	PhoneBook.hpp \
-		Contact.hpp
 
 # obj
 OBJ = $(SRC:.cpp=.o)

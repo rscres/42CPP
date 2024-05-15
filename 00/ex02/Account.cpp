@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/08 21:26:49 by renato            #+#    #+#             */
-/*   Updated: 2024/05/15 14:49:00 by rseelaen         ###   ########.fr       */
+/*   Created: 2024/05/10 11:38:38 by rseelaen          #+#    #+#             */
+/*   Updated: 2024/05/10 11:41:38 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Account.hpp"
 
-int main(void) {
-	int znum = 5;
+Account::Account(int initial_deposit) {
+	_nbAccounts++;
+	_totalAmount = initial_deposit;
+}
 
-    Zombie *horde = zombieHorde(znum, "Mob");
-	for (int i = 0; i < znum; i++) {
-		horde[i].announce();
-	}
-    deleteZombieHorde(horde);
-
-	znum = 10;
-	Zombie *horde = zombieHorde(znum, "Mob");
-	for (int i = 0; i < znum; i++) {
-		horde[i].announce();
-	}
-    deleteZombieHorde(horde);
-    return (0);
+Account::~Account(void) {
+	_nbAccounts--;
 }

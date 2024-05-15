@@ -2,18 +2,15 @@
 CC = c++
 
 # program name
-NAME = zombie
+NAME = fight
 
 # compiler flags
 CFLAGS  = -g -Wall -Wextra -Werror -std=c++98
 
 SRC =	main.cpp \
-		Zombie.cpp \
-		newZombie.cpp \
-		randomChump.cpp
-
-# includes
-INC =	Zombie.hpp 
+		HumanA.cpp \
+		HumanB.cpp \
+		Weapon.cpp
 
 # obj
 OBJ = $(SRC:.cpp=.o)
