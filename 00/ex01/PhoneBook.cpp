@@ -6,7 +6,7 @@
 /*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 11:14:48 by renato            #+#    #+#             */
-/*   Updated: 2024/05/07 22:49:43 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/07 23:13:13 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ std::string getInfo(std::string info)
     std::cout << info;
     std::cin >> input;
     while (input.empty())
+    {
+        std::cout << std::endl << "Field cannot be empty. " << info;
         std::cin >> input;
+    }
     return input;
 }
 
