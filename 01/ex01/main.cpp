@@ -3,18 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 21:26:49 by renato            #+#    #+#             */
-/*   Updated: 2024/05/09 23:42:23 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/15 14:31:56 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
 int main(void) {
+	int znum = 5;
 
-    Zombie *zombie = zombieHorde(5, "Zombie");
-    deleteZombieHorde(zombie);
+    Zombie *horde = zombieHorde(znum, "Mob");
+	for (int i = 0; i < znum; i++) {
+		horde[i].announce();
+	}
+    deleteZombieHorde(horde);
     return (0);
 }

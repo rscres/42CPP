@@ -6,11 +6,13 @@
 class Zombie {
     private:
         std::string name;
+		int 		position;
 
     public:
         Zombie(void);
         ~Zombie(void);
         void setName(std::string name);
+		void setPosition(int pos);
         void announce(void);
 };
 

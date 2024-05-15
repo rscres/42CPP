@@ -3,28 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 23:16:20 by renato            #+#    #+#             */
-/*   Updated: 2024/05/09 23:42:54 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/15 14:23:32 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie *zombieHorde( int N, std::string name )
-{
+Zombie *zombieHorde( int N, std::string name ) {
     Zombie *zombieHorde = new Zombie[N];
 
-    for (int i = 0; i < N; i++)
-    {
+    for (int i = 0; i < N; i++) {
         zombieHorde[i].setName(name);
-        zombieHorde[i].announce();
+        zombieHorde[i].setPosition(i);
     }
     return zombieHorde;
 }
 
-void    deleteZombieHorde(Zombie *zombieHorde)
-{
+void    deleteZombieHorde(Zombie *zombieHorde) {
     delete[] zombieHorde;
 }

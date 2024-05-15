@@ -1,5 +1,5 @@
 # compiler
-CC = g++
+CC = c++
 
 # program name
 NAME = zombie
