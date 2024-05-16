@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:31:06 by rseelaen          #+#    #+#             */
-/*   Updated: 2024/05/15 16:00:49 by rseelaen         ###   ########.fr       */
+/*   Updated: 2024/05/15 17:54:55 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 Weapon::Weapon(void) {
 	this->type = "";
+}
+
+Weapon::Weapon(std::string type) {
+	this->type = type;
 }
 
 Weapon::~Weapon(void) {
