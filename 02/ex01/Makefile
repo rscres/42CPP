@@ -2,13 +2,14 @@
 CC = c++
 
 # program name
-NAME = replace
+NAME = fixed
 
 # compiler flags
 CFLAGS  = -g -Wall -Wextra -Werror -std=c++98
 
-SRC =	main.cpp
-
+SRC =	main.cpp \
+		Fixed.cpp
+ 
 # obj
 OBJ = $(SRC:.cpp=.o)
 

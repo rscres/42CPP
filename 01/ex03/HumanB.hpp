@@ -6,7 +6,7 @@
 /*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 18:01:25 by renato            #+#    #+#             */
-/*   Updated: 2024/05/15 20:46:55 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/16 23:01:00 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define HUMANB_H
 
 # include "Weapon.hpp"
+# include <string>
 # include <iostream>
 
 class HumanB {
