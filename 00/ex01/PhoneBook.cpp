@@ -3,46 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 11:14:48 by renato            #+#    #+#             */
-/*   Updated: 2024/05/07 23:13:13 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/19 18:42:30 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <iostream>
+#include <iostream>
 #include <string>
 #include <sstream>
 #include "PhoneBook.hpp"
 
-std::string getInfo(std::string info)
-{
+std::string getInfo(std::string info) {
     std::string input;
 
     std::cout << info;
-    std::cin >> input;
+	std::getline(std::cin, input);
     while (input.empty())
     {
-        std::cout << std::endl << "Field cannot be empty. " << info;
-        std::cin >> input;
+        std::cout << "Field cannot be empty. " << std::endl << info;
+        std::getline(std::cin, input);
     }
     return input;
 }
 
-Contact setContactInfo()
-{
+bool is_num(std::string str) {
+	for (size_t i = 0; i < str.length(); i++) {
+		if (!isdigit(str[i]))
+			return false;
+	}
+	return true;
+}
+
+std::string getNumber(std::string info) {
+	std::string input;
+
+    std::cout << info;
+	std::getline(std::cin, input);
+	while (input.empty() || !is_num(input))
+    {
+        std::cout << "Field cannot be empty and must contain only numbers. " << std::endl << info;
+        std::getline(std::cin, input);
+    }
+	return input;
+}
+
+Contact setContactInfo() {
     Contact newContact;
 
     newContact.setFirstName(getInfo("Enter first name: "));
     newContact.setLastName(getInfo("Enter last name: "));
     newContact.setNickname(getInfo("Enter nickname: "));
-    newContact.setPhoneNumber(getInfo("Enter phone number: "));
+    newContact.setPhoneNumber(getNumber("Enter phone number: "));
     newContact.setDarkestSecret(getInfo("Enter darkest secret: "));
     return newContact;
 }
 
-void PhoneBook::addContact()
-{
+void PhoneBook::addContact() {
     for (int i = 0; i < 8; i++)
     {
         if (this->contacts[i].getFirstName() == "")
@@ -61,11 +79,28 @@ void PhoneBook::addContact()
     return;
 }
 
-void PhoneBook::searchContact()
-{
-    std::string index;
+void displayContacts(Contact contacts[8]) {
+	for (int i = 0; i < 8; i++) {
+		if (contacts[i].getFirstName() == "")
+			return;
+		contacts[i].printContact(i);
+	}
 
-    index = getInfo("Enter the index of the contact you want to see: ");
+}
+
+void printSearch(Contact contact) {
+	std::cout << std::endl;
+	std::cout << "First name    : " << contact.getFirstName() << std::endl;
+	std::cout << "Last name     : " << contact.getLastName() << std::endl;
+	std::cout << "Nickname      : " << contact.getNickname() << std::endl;
+	std::cout << "Phone number  : " << contact.getPhoneNumber() << std::endl;
+	std::cout << "Darkest secret: " << contact.getDarkestSecret() << std::endl;
+	std::cout << std::endl;
+}
+
+void PhoneBook::searchContact() {
+	displayContacts(this->contacts);
+    std::string index = getInfo("Enter the index of the contact you want to see[0-7]: ");
     if (index.length() == 1 && index[0] >= '0' && index[0] <= '7')
     {
         std::stringstream ss(index);
@@ -76,7 +111,7 @@ void PhoneBook::searchContact()
             std::cout << "No contact at this index" << std::endl;
             return;
         }
-        this->contacts[i].printContact(i);
+        printSearch(this->contacts[i]);
     }
     else
     {
