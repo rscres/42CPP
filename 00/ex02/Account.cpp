@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 11:38:38 by rseelaen          #+#    #+#             */
-/*   Updated: 2024/05/20 14:31:03 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/20 16:43:11 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ bool Account::makeWithdrawal(int withdrawal) {
 			  << ";withdrawal:" << withdrawal
 			  << ";amount:";
 	_amount -= withdrawal;
-	std::cout << _amount << "nb_withdrawals:" << _nbWithdrawals << std::endl;
+	std::cout << _amount << ";nb_withdrawals:" << _nbWithdrawals << std::endl;
 	_totalAmount -= withdrawal;
 	return true;
 }
