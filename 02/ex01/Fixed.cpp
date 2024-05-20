@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 23:08:13 by renato            #+#    #+#             */
-/*   Updated: 2024/05/19 12:32:22 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/20 18:46:34 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
+#include <cmath>
 
 Fixed::Fixed(void) : value(0) {
     std::cout << "Default constructor called" << std::endl;
@@ -21,6 +22,16 @@ Fixed::Fixed(void) : value(0) {
 Fixed::Fixed(Fixed const & src) {
     std::cout << "Copy constructor called" << std::endl;
     this->operator=(src);
+}
+
+Fixed::Fixed(int const value) {
+	std::cout << "Int constructor called" << std::endl;
+	this->value = value << fractionalBits;
+}
+
+Fixed::Fixed(float const value) {
+	std::cout << "Float constructor called" << std::endl;
+	this->value = roundf(value * (1 << fractionalBits));
 }
 
 Fixed::~Fixed(void) {
@@ -39,7 +50,6 @@ std::ostream & operator<<(std::ostream & o, Fixed const & rhs) {
 }
 
 int Fixed::getRawBits( void ) const {
-    std::cout << "getRawBits member function called" << std::endl;
     return value;
 }
 
@@ -48,9 +58,9 @@ void Fixed::setRawBits(int const raw) {
 }
 
 float Fixed::toFloat(void) const {
-    return (float)this->value / (1 << fractionalBits);
+    return static_cast<float>(getRawBits()) / (1 << fractionalBits);
 }
 
 int Fixed::toInt(void) const {
-    return (int)this->value;
+    return (int)getRawBits() >> fractionalBits;
 }
