@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 23:08:13 by renato            #+#    #+#             */
-/*   Updated: 2024/05/20 19:01:41 by rseelaen         ###   ########.fr       */
+/*   Updated: 2024/05/20 23:16:19 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,10 @@ Fixed & Fixed::operator=(Fixed const & rhs) {
     return *this;
 }
 
-std::ostream & Fixed::operator<<(std::ostream & o) const {
-    o << this->toFloat();
+std::ostream & operator<<(std::ostream & o, const Fixed & fixed) {
+    o << fixed.toFloat();
     return o;
 }
-
-
 
 int Fixed::getRawBits( void ) const {
     return value;
