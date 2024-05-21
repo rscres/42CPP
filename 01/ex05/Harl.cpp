@@ -6,7 +6,7 @@
 /*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 20:59:07 by renato            #+#    #+#             */
-/*   Updated: 2024/05/16 22:02:24 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/20 22:21:46 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void Harl::error(void) {
     std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
+typedef void (Harl::*t_funcPtr)(void);
+
 t_levels resolveLevels(std::string level) {
     return  level == "DEBUG" ? DEBUG :
             level == "INFO" ? INFO :
@@ -46,20 +48,25 @@ t_levels resolveLevels(std::string level) {
 
 void Harl::complain(std::string level) {
     t_levels option = resolveLevels(level);
+    t_funcPtr funcPtr = NULL;
+
     switch (option) {
         case DEBUG:
-            this->debug();
+            funcPtr = &Harl::debug;
             break;
         case INFO:
-            this->info();
+            funcPtr = &Harl::info;
             break;
         case WARNING:
-            this->warning();
+            funcPtr = &Harl::warning;
             break;
         case ERROR:
-            this->error();
+            funcPtr = &Harl::error;
             break;
         default:
             std::cout << "I don't even know how to complain about that." << std::endl;
+            return;
     }
+
+    (this->*funcPtr)();
 }
