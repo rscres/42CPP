@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 22:01:06 by renato            #+#    #+#             */
-/*   Updated: 2024/05/16 21:19:38 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/21 18:12:23 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ std::string readFileContent(char *filename) {
     std::string buffer;
     while (!file.eof()) {
         file.getline(line, 2048);
-        if (!line[0])
-            break;
         buffer.append(line);
         buffer.append("\n");
     }
@@ -63,6 +61,8 @@ int main(int argc, char *argv[]) {
     }
     std::string buffer = readFileContent(argv[1]);
     buffer = replaceWord(buffer, argv[2], argv[3]);
+	if (buffer == "")
+		return 1;
     std::string outfile_name = std::string(argv[1]) + ".replace";
     writeFileContent(buffer, outfile_name);
     return 0;

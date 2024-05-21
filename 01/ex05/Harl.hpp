@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 20:54:51 by renato            #+#    #+#             */
-/*   Updated: 2024/05/16 22:00:05 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/21 17:09:22 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,6 @@
 # define HARL_HPP
 
 # include <string>
-
-typedef enum e_levels {
-    DEBUG,
-    INFO,
-    WARNING,
-    ERROR,
-    INVALID
-}   t_levels;
 
 class Harl {
     private:
@@ -33,7 +25,9 @@ class Harl {
     public:
         Harl( void );
         ~Harl( void );
-        void complain( std::string level );
+        void complain( std::string const level );
 };
+
+typedef void (Harl::*t_funcPtr)(void);
 
 #endif

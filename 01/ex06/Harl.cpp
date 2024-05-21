@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 20:59:07 by renato            #+#    #+#             */
-/*   Updated: 2024/05/16 22:56:02 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/21 17:13:23 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,30 +41,27 @@ void Harl::error(void) {
     std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-t_levels resolveLevels(std::string level) {
-    return  level == "DEBUG" ? DEBUG :
-            level == "INFO" ? INFO :
-            level == "WARNING" ? WARNING :
-            level == "ERROR" ? ERROR : INVALID;
-}
-
 void Harl::complain(std::string level) {
-    t_levels option = resolveLevels(level);
-    //might need to change fallthough usage below
-    switch (option) {
-        case DEBUG:
-            this->debug();
-            /* fallthrough */
-        case INFO:
-            this->info();
-            /* fallthrough */
-        case WARNING:
-            this->warning();
-            /* fallthrough */
-        case ERROR:
-            this->error();
-            break;
-        default:
-            std::cout << "I don't even know how to complain about that." << std::endl;
+	std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	int lvl = 4;
+	for (int i = 0; i < 4; i++) {
+		if (level.compare(levels[i]) == 0)
+			lvl = i;
+	}
+    switch (lvl) {
+	case DEBUG:
+		this->debug();
+		/* fallthrough */
+	case INFO:
+		this->info();
+		/* fallthrough */
+	case WARNING:
+		this->warning();
+		/* fallthrough */
+	case ERROR:
+		this->error();
+		break;
+	default:
+		std::cout << "I don't even know how to complain about that." << std::endl;
     }
 }

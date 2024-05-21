@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 21:26:49 by renato            #+#    #+#             */
-/*   Updated: 2024/05/15 14:49:00 by rseelaen         ###   ########.fr       */
+/*   Updated: 2024/05/21 17:22:04 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(void) {
     deleteZombieHorde(horde);
 
 	znum = 10;
-	Zombie *horde = zombieHorde(znum, "Mob");
+	horde = zombieHorde(znum, "Chump");
 	for (int i = 0; i < znum; i++) {
 		horde[i].announce();
 	}

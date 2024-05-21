@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 23:08:16 by renato            #+#    #+#             */
-/*   Updated: 2024/05/19 12:31:58 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/21 18:52:09 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,20 @@ class Fixed {
         Fixed(Fixed const & src);
         ~Fixed(void);
         Fixed & operator=(Fixed const & rhs);
-        friend std::ostream & operator<<(std::ostream & o, Fixed const & rhs);
         int getRawBits(void) const;
         void setRawBits(int const raw);
         float toFloat(void) const;
         int toInt(void) const;
 };
+
+std::ostream & operator<<(std::ostream & o, Fixed const & rhs);
+bool operator==(Fixed const & a, Fixed const & b);
+bool operator!=(Fixed const & a, Fixed const & b);
+bool operator>=(Fixed const & a, Fixed const & b);
+bool operator<=(Fixed const & a, Fixed const & b);
+bool operator<(Fixed const & a, Fixed const & b);
+bool operator>(Fixed const & a, Fixed const & b);
+
+
 
 #endif
