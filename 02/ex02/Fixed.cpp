@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 23:08:13 by renato            #+#    #+#             */
-/*   Updated: 2024/05/21 18:50:54 by rseelaen         ###   ########.fr       */
+/*   Updated: 2024/05/22 18:15:37 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,11 @@ std::ostream & operator<<(std::ostream & o, Fixed const & rhs) {
     return o;
 }
 
+Fixed &Fixed::operator++(void) {
+	this->setRawBits(toInt() + 1);
+	return *this;
+}
+
 bool operator==(Fixed const & a, Fixed const & b) {
 	return a.getRawBits() == b.getRawBits();
 }
@@ -80,8 +85,34 @@ bool operator<(Fixed const & a, Fixed const & b) {
 	return a.getRawBits() < b.getRawBits();
 }
 
+Fixed operator+(Fixed const & a, Fixed const & b) {
+	Fixed result;
+	result.setRawBits(a.getRawBits() + b.getRawBits());
+	return result;
+}
+
+Fixed operator-(Fixed const & a, Fixed const & b) {
+	Fixed result;
+	result.setRawBits(a.getRawBits() - b.getRawBits());
+	return result;
+}
+
+Fixed operator*(Fixed const & a, Fixed const & b) {
+	return Fixed(a.toFloat() * b.toFloat());
+}
+
+Fixed operator/(Fixed const & a, Fixed const & b) {
+	if (b.getRawBits() == 0.0f) {
+		std::cout << "Can't divide by 0" << std::endl;
+		return Fixed(0);
+	}
+	return Fixed(a.toFloat() / b.toFloat());
+}
+
+//MEMBER FUNCTIONS-----------------------
+
 int Fixed::getRawBits( void ) const {
-    return value;
+	return value;
 }
 
 void Fixed::setRawBits(int const raw) {
