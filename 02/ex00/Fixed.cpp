@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 23:08:13 by renato            #+#    #+#             */
-/*   Updated: 2024/05/18 23:21:26 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/23 16:37:17 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 
-Fixed::Fixed(void) : value(0) {
+Fixed::Fixed(void) : _value(0) {
     std::cout << "Default constructor called" << std::endl;
     return;
 }

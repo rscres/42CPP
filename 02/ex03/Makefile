@@ -8,9 +8,7 @@ NAME = fixed
 CFLAGS  = -g -Wall -Wextra -Werror -std=c++98
 
 SRC =	main.cpp \
-		Fixed.cpp \
-		Point.cpp \
-		bsp.cpp
+		Fixed.cpp
  
 # obj
 OBJ = $(SRC:.cpp=.o)
