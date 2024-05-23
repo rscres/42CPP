@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 23:08:13 by renato            #+#    #+#             */
-/*   Updated: 2024/05/22 18:15:37 by rseelaen         ###   ########.fr       */
+/*   Updated: 2024/05/22 20:41:26 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,27 @@
 //CONSTRUCTORS------------
 
 Fixed::Fixed(void) : value(0) {
-    std::cout << "Default constructor called" << std::endl;
+    // std::cout << "Default constructor called" << std::endl;
     return;
 }
 
 Fixed::Fixed(Fixed const & src) {
-    std::cout << "Copy constructor called" << std::endl;
+    // std::cout << "Copy constructor called" << std::endl;
     this->operator=(src);
 }
 
 Fixed::Fixed(int const value) {
-	std::cout << "Int constructor called" << std::endl;
+	// std::cout << "Int constructor called" << std::endl;
 	this->value = value << fractionalBits;
 }
 
 Fixed::Fixed(float const value) {
-	std::cout << "Float constructor called" << std::endl;
+	// std::cout << "Float constructor called" << std::endl;
 	this->value = roundf(value * (1 << fractionalBits));
 }
 
 Fixed & Fixed::operator=(Fixed const & rhs) {
-    std::cout << "Copy assignnment operator called" << std::endl;
+    // std::cout << "Copy assignnment operator called" << std::endl;
     setRawBits(rhs.getRawBits());
     return *this;
 }
@@ -45,7 +45,7 @@ Fixed & Fixed::operator=(Fixed const & rhs) {
 //DESTRUCTOR----------------
 
 Fixed::~Fixed(void) {
-    std::cout << "Destructor called" << std::endl;
+    // std::cout << "Destructor called" << std::endl;
 }
 
 
@@ -57,8 +57,25 @@ std::ostream & operator<<(std::ostream & o, Fixed const & rhs) {
 }
 
 Fixed &Fixed::operator++(void) {
-	this->setRawBits(toInt() + 1);
+	this->value += 1 << fractionalBits;
 	return *this;
+}
+
+Fixed Fixed::operator++(int) {
+	Fixed tmp(*this);
+    operator++();
+	return tmp;
+}
+
+Fixed &Fixed::operator--(void) {
+	this->value -= 1 << fractionalBits;
+	return *this;
+}
+
+Fixed Fixed::operator--(int) {
+	Fixed tmp(*this);
+    operator--();
+	return tmp;
 }
 
 bool operator==(Fixed const & a, Fixed const & b) {
@@ -125,4 +142,20 @@ float Fixed::toFloat(void) const {
 
 int Fixed::toInt(void) const {
     return (int)getRawBits() >> fractionalBits;
+}
+
+Fixed & Fixed::min(Fixed & a, Fixed & b) {
+    return a.getRawBits() < b.getRawBits() ? a : b;
+}
+
+const Fixed & Fixed::min(Fixed const & a, Fixed const & b) {
+    return a.getRawBits() < b.getRawBits() ? a : b;
+}
+
+Fixed & Fixed::max(Fixed & a, Fixed & b) {
+    return a.getRawBits() > b.getRawBits() ? a : b;
+}
+
+const Fixed & Fixed::max(Fixed const & a, Fixed const & b) {
+    return a.getRawBits() > b.getRawBits() ? a : b;
 }
