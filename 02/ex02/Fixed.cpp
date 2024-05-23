@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 23:08:13 by renato            #+#    #+#             */
-/*   Updated: 2024/05/22 20:41:26 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/23 11:52:15 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,22 @@
 //CONSTRUCTORS------------
 
 Fixed::Fixed(void) : value(0) {
-    // std::cout << "Default constructor called" << std::endl;
     return;
 }
 
 Fixed::Fixed(Fixed const & src) {
-    // std::cout << "Copy constructor called" << std::endl;
     this->operator=(src);
 }
 
 Fixed::Fixed(int const value) {
-	// std::cout << "Int constructor called" << std::endl;
 	this->value = value << fractionalBits;
 }
 
 Fixed::Fixed(float const value) {
-	// std::cout << "Float constructor called" << std::endl;
 	this->value = roundf(value * (1 << fractionalBits));
 }
 
 Fixed & Fixed::operator=(Fixed const & rhs) {
-    // std::cout << "Copy assignnment operator called" << std::endl;
     setRawBits(rhs.getRawBits());
     return *this;
 }
@@ -45,9 +40,7 @@ Fixed & Fixed::operator=(Fixed const & rhs) {
 //DESTRUCTOR----------------
 
 Fixed::~Fixed(void) {
-    // std::cout << "Destructor called" << std::endl;
 }
-
 
 //OVERLOAD OPERATORS---------
 
@@ -56,23 +49,23 @@ std::ostream & operator<<(std::ostream & o, Fixed const & rhs) {
     return o;
 }
 
-Fixed &Fixed::operator++(void) {
-	this->value += 1 << fractionalBits;
+Fixed &Fixed::operator++(void) { //prefix
+	this->value += 1;
 	return *this;
 }
 
-Fixed Fixed::operator++(int) {
+Fixed Fixed::operator++(int) { //Postfix
 	Fixed tmp(*this);
     operator++();
 	return tmp;
 }
 
-Fixed &Fixed::operator--(void) {
-	this->value -= 1 << fractionalBits;
+Fixed &Fixed::operator--(void) { //Prefix
+	this->value -= 1;
 	return *this;
 }
 
-Fixed Fixed::operator--(int) {
+Fixed Fixed::operator--(int) { //Postfix
 	Fixed tmp(*this);
     operator--();
 	return tmp;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 23:08:23 by renato            #+#    #+#             */
-/*   Updated: 2024/05/22 20:53:01 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/23 11:47:57 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,16 @@ int main( void ) {
     std::cout << "b is " << b << std::endl;
     std::cout << "c is " << c << std::endl;
     std::cout << "d is " << d << std::endl;
-    std::cout << (b == c) << std::endl;
-	std::cout << (b.getRawBits() == c.getRawBits()) << std::endl;
-	std::cout << (b == d) << std::endl;
-	std::cout << (b.getRawBits() == d.getRawBits()) << std::endl;
-	std::cout << (b >= c) << std::endl;
-	std::cout << (b.getRawBits() >= c.getRawBits()) << std::endl;
-	std::cout << (b <= c) << std::endl;
-	std::cout << (b.getRawBits() <= c.getRawBits()) << std::endl;
-	std::cout << (b < c) << std::endl;
-	std::cout << (b.getRawBits() < c.getRawBits()) << std::endl;
-	std::cout << (b + c) << std::endl;
-	std::cout << (b - c) << std::endl;
-	std::cout << (b * c) << std::endl;
-	std::cout << (c / b) << std::endl;
+    std::cout << "b == c : " << (b == c) << std::endl;
+	std::cout << "b == d : " << (b == d) << std::endl;
+	std::cout << "b >= c : " << (b >= c) << std::endl;
+	std::cout << "b <= c : " << (b <= c) << std::endl;
+	std::cout << "b < c  : " << (b < c) << std::endl;
+	std::cout << "b > c  : " << (b > c) << std::endl;
+	std::cout << "b + c  : " << (b + c) << std::endl;
+	std::cout << "b - c  : " << (b - c) << std::endl;
+	std::cout << "b * c  : " << (b * c) << std::endl;
+	std::cout << "b / c  : " << (c / b) << std::endl;
 	std::cout << "before: " << e << " after: " << ++e << std::endl;
 	std::cout << "before: " << e << " after: " << --e << std::endl;
 	std::cout << "before: " << e-- << " after: " << e << std::endl;
@@ -53,36 +49,31 @@ int main( void ) {
     std::cout << "g is " << g << std::endl;
     std::cout << "h is " << h << std::endl;
 
-    std::cout << "(f != g) " << (f != g) << std::endl;
-    std::cout << "(f.getRawBits() != g.getRawBits()) " << (f.getRawBits() != g.getRawBits()) << std::endl;
-
-    std::cout << "(f > g) " << (f > g) << std::endl;
-    std::cout << "(f.getRawBits() > g.getRawBits()) " << (f.getRawBits() > g.getRawBits()) << std::endl;
-
-    std::cout << "(f < g) " << (f < g) << std::endl;
-    std::cout << "(f.getRawBits() < g.getRawBits()) " << (f.getRawBits() < g.getRawBits()) << std::endl;
-
+    std::cout << "f != g : " << (f != g) << std::endl;
+    std::cout << "f > g  : " << (f > g) << std::endl;
+    std::cout << "f < g  : " << (f < g) << std::endl;
     std::cout << "f + g = " << (f + g) << std::endl;
     std::cout << "f - g = " << (f - g) << std::endl;
     std::cout << "f * g = " << (f * g) << std::endl;
     std::cout << "f / g = " << (f / g) << std::endl;
 
-    std::cout << "before: " << h << " after: " << ++h << std::endl;
-	std::cout << h.toInt() << std::endl;
-	std::cout << h.toFloat() << std::endl;
-    std::cout << "before: " << h << " after: " << --h << std::endl;
-    std::cout << "before: " << h-- << " after: " << h << std::endl;
-    std::cout << "before: " << h++ << " after: " << h << std::endl;
+    std::cout << "[++h]before: " << h << " after: " << ++h << std::endl;
+	std::cout << "h.toInt()  : " << h.toInt() << std::endl;
+	std::cout << "h.toFloat():" << h.toFloat() << std::endl;
+    std::cout << "[--h]before: " << h << " after: " << --h << std::endl;
+    std::cout << "[h--]before: " << h-- << " after: " << h << std::endl;
+    std::cout << "[h++]before: " << h++ << " after: " << h << std::endl;
 
 	Fixed i;
 	Fixed const j( Fixed( 5.05f ) * Fixed( 2 ) );
-	std::cout << i << std::endl;
-	std::cout << ++i << std::endl;
-	std::cout << i << std::endl;
-	std::cout << i++ << std::endl;
-	std::cout << i << std::endl;
-	std::cout << j << std::endl;
-	std::cout << Fixed::max( i, j ) << std::endl;
+	std::cout << "i  : " << i << std::endl;
+	std::cout << "++i: " << ++i << std::endl;
+	std::cout << "i  : " << i << std::endl;
+	std::cout << "i++: " << i++ << std::endl;
+	std::cout << "i  : " << i << std::endl;
+	std::cout << "j  : " << j << std::endl;
+	std::cout << "Max(i, j): " << Fixed::max( i, j ) << std::endl;
+	std::cout << "Min(i, j): " << Fixed::min( i, j ) << std::endl;
 
     return 0;
 }
