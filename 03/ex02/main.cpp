@@ -6,7 +6,7 @@
 /*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 15:08:59 by rseelaen          #+#    #+#             */
-/*   Updated: 2024/05/23 22:21:28 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/23 22:30:26 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ int main(void) {
 	scavTrap.guardGate();
 	FragTrap fragTrap("Fraggy");
 	fragTrap.highFiveGuys();
+	fragTrap.attack(clapTrap.getName());
+	clapTrap.takeDamage(fragTrap.getAttackDmg());
 	return 0;
 }

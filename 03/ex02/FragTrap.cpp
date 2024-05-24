@@ -6,7 +6,7 @@
 /*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 22:06:40 by renato            #+#    #+#             */
-/*   Updated: 2024/05/23 22:20:05 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/23 22:32:14 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ FragTrap::FragTrap(void) : ClapTrap("FragTrap") {
     setHp(100);
     setEnergyPoints(100);
     setAttackDmg(30);
-    std::cout << "FragTrap default constructor" << std::endl;
+    std::cout << "FragTrap has spawned" << std::endl;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name) {
     setHp(100);
     setEnergyPoints(100);
     setAttackDmg(30);
-    std::cout << "FragTrap name constructor" << std::endl;
+    std::cout << "FragTrap has spawned with a name" << std::endl;
 }
 
 FragTrap::FragTrap(FragTrap const & src) : ClapTrap(src) {
-    std::cout << "FragTrap copy constructor" << std::endl;
+    std::cout << "FragTrap has spawned as a copy" << std::endl;
 }
 
 FragTrap & FragTrap::operator=(FragTrap const & rhs) {
