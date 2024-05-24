@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 15:15:22 by rseelaen          #+#    #+#             */
-/*   Updated: 2024/05/23 21:39:12 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/24 11:18:12 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ void ClapTrap::attack(const std::string& target) {
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
+	if (_hp <= 0) {
+		std::cout << "ClapTrap " << _name << " has no health left!" <<std::endl;
+		return;
+	}
 	std::cout << "ClapTrap " << _name << " takes " << amount << " points of damage!" << std::endl;
 }
 
@@ -76,22 +80,6 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	_energyPoints--;
 	std::cout << "ClapTrap " << _name << " repairs itself for " << amount
 			  << " health points." << std::endl;
-}
-
-void ClapTrap::setName(std::string name) {
-	_name = name;
-}
-
-void ClapTrap::setHp(int hp) {
-	_hp = hp;
-}
-
-void ClapTrap::setEnergyPoints(int energyPoints) {
-	_energyPoints = energyPoints;
-}
-
-void ClapTrap::setAttackDmg(int attackDmg) {
-	_attackDmg = attackDmg;
 }
 
 std::string ClapTrap::getName(void) const {

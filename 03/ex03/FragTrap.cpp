@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 22:06:40 by renato            #+#    #+#             */
-/*   Updated: 2024/05/23 22:32:14 by renato           ###   ########.fr       */
+/*   Updated: 2024/05/24 11:21:59 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
 FragTrap::FragTrap(void) : ClapTrap("FragTrap") {
-    setHp(100);
-    setEnergyPoints(100);
-    setAttackDmg(30);
+    _hp = 100;
+	_energyPoints = 100;
+    _attackDmg = 30;
     std::cout << "FragTrap has spawned" << std::endl;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name) {
-    setHp(100);
-    setEnergyPoints(100);
-    setAttackDmg(30);
+    _hp = 100;
+	_energyPoints = 100;
+    _attackDmg = 30;
     std::cout << "FragTrap has spawned with a name" << std::endl;
 }
 
@@ -41,5 +41,5 @@ FragTrap::~FragTrap(void) {
 }
 
 void FragTrap::highFiveGuys(void) {
-    std::cout << "FragTrap " << getName() << " high fives everyone!" << std::endl;
+    std::cout << "FragTrap " << _name << " high fives everyone!" << std::endl;
 }
