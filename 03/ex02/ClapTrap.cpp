@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 15:15:22 by rseelaen          #+#    #+#             */
-/*   Updated: 2024/05/24 11:18:12 by rseelaen         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:46:56 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ ClapTrap::ClapTrap(void) {
 	_hp = 10;
 	_energyPoints = 10;
 	_attackDmg = 0;
-	std::cout << "ClapTrap " << _name << " has been created" << std::endl;
+	std::cout << BLUE "ClapTrap " RESET << _name << " has been created" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name) {
@@ -25,12 +25,12 @@ ClapTrap::ClapTrap(std::string name) {
 	_hp = 10;
 	_energyPoints = 10;
 	_attackDmg = 0;
-	std::cout << "ClapTrap " << _name << " has been created" << std::endl;
+	std::cout << BLUE "ClapTrap " RESET << _name << " has been created" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const & src) {
 	this->operator=(src);
-	std::cout << "ClapTrap " << _name << " has been copied" << std::endl;
+	std::cout << BLUE "ClapTrap " RESET << _name << " has been copied" << std::endl;
 }
 
 ClapTrap & ClapTrap::operator=(ClapTrap const & rhs) {
@@ -38,47 +38,49 @@ ClapTrap & ClapTrap::operator=(ClapTrap const & rhs) {
 	this->_hp = rhs._hp;
 	this->_energyPoints = rhs._energyPoints;
 	this->_attackDmg = rhs._attackDmg;
-	std::cout << "ClapTrap " << _name << " has been copy assigned" << std::endl;
+	std::cout << BLUE "ClapTrap " RESET << _name << " has been copy assigned" << std::endl;
 	return *this;
 }
 
 ClapTrap::~ClapTrap(void) {
-	std::cout << "ClapTrap " << _name << " has been destroyed" << std::endl;
+	std::cout << BLUE "ClapTrap " RESET << _name << " has been destroyed" << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target) {
 	if (_hp <= 0) {
-		std::cout << "ClapTrap " << _name << " has no health left!" <<std::endl;
+		std::cout << BLUE "ClapTrap " RESET << _name << " has no health left!" <<std::endl;
 		return;
 	}
 	if (_energyPoints == 0) {
-		std::cout << "ClapTrap " << _name << " has no energy to attack!" <<std::endl;
+		std::cout << BLUE "ClapTrap " RESET << _name << " has no energy to attack!" <<std::endl;
 		return;
 	}
 	_energyPoints--;
-	std::cout << "ClapTrap " << _name << " attacks " << target << " for " << _attackDmg
+	std::cout << BLUE "ClapTrap " RESET << _name << " attacks " << target << " for " << _attackDmg
 			  << " points of damage!" << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
 	if (_hp <= 0) {
-		std::cout << "ClapTrap " << _name << " has no health left!" <<std::endl;
+		std::cout << BLUE "ClapTrap " RESET << _name << " has no health left!" <<std::endl;
 		return;
 	}
-	std::cout << "ClapTrap " << _name << " takes " << amount << " points of damage!" << std::endl;
+	_hp -= amount;
+	std::cout << BLUE "ClapTrap " RESET << _name << " takes " << amount << " points of damage!" << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
 	if (_hp <= 0) {
-		std::cout << "ClapTrap " << _name << " has no health left!" <<std::endl;
+		std::cout << BLUE "ClapTrap " RESET << _name << " has no health left!" <<std::endl;
 		return;
 	}
 	if (_energyPoints == 0) {
-		std::cout << "ClapTrap " << _name << " has no energy to repair itself!" <<std::endl;
+		std::cout << BLUE "ClapTrap " RESET << _name << " has no energy to repair itself!" <<std::endl;
 		return;
 	}
+	_hp += amount;
 	_energyPoints--;
-	std::cout << "ClapTrap " << _name << " repairs itself for " << amount
+	std::cout << BLUE "ClapTrap " RESET << _name << " repairs itself for " << amount
 			  << " health points." << std::endl;
 }
 
