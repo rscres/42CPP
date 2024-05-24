@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 15:15:22 by rseelaen          #+#    #+#             */
-/*   Updated: 2024/05/23 17:39:43 by rseelaen         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:21:08 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void ClapTrap::attack(const std::string& target) {
 		return;
 	}
 	if (_energyPoints == 0) {
-		std::cout << "ClapTrap " << _name << "has no energy to attack!" <<std::endl;
+		std::cout << "ClapTrap " << _name << " has no energy to attack!" <<std::endl;
 		return;
 	}
 	_energyPoints--;

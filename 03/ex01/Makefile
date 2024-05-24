@@ -2,14 +2,15 @@
 CC = c++
 
 # program name
-NAME = clapTrap
+NAME = scavTrap
 
 # compiler flags
 CFLAGS  = -g -Wall -Wextra -Werror -std=c++98
 
 # source files
 SRC =	main.cpp \
-		ClapTrap.cpp
+		ClapTrap.cpp \
+		ScavTrap.cpp 
 
 # build directory
 BUILD_DIR = build

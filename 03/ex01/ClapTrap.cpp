@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 15:15:22 by rseelaen          #+#    #+#             */
-/*   Updated: 2024/05/23 17:39:43 by rseelaen         ###   ########.fr       */
+/*   Updated: 2024/05/23 21:39:12 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ ClapTrap::ClapTrap(void) {
 	_hp = 10;
 	_energyPoints = 10;
 	_attackDmg = 0;
-	std::cout << _name << " has been created" << std::endl;
+	std::cout << "ClapTrap " << _name << " has been created" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name) {
@@ -25,12 +25,12 @@ ClapTrap::ClapTrap(std::string name) {
 	_hp = 10;
 	_energyPoints = 10;
 	_attackDmg = 0;
-	std::cout << _name << " has been created" << std::endl;
+	std::cout << "ClapTrap " << _name << " has been created" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const & src) {
 	this->operator=(src);
-	std::cout << _name << " has been copied" << std::endl;
+	std::cout << "ClapTrap " << _name << " has been copied" << std::endl;
 }
 
 ClapTrap & ClapTrap::operator=(ClapTrap const & rhs) {
@@ -38,12 +38,12 @@ ClapTrap & ClapTrap::operator=(ClapTrap const & rhs) {
 	this->_hp = rhs._hp;
 	this->_energyPoints = rhs._energyPoints;
 	this->_attackDmg = rhs._attackDmg;
-	std::cout << _name << " has been copy assigned" << std::endl;
+	std::cout << "ClapTrap " << _name << " has been copy assigned" << std::endl;
 	return *this;
 }
 
 ClapTrap::~ClapTrap(void) {
-	std::cout << _name << " has been destroyed" << std::endl;
+	std::cout << "ClapTrap " << _name << " has been destroyed" << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target) {
@@ -52,7 +52,7 @@ void ClapTrap::attack(const std::string& target) {
 		return;
 	}
 	if (_energyPoints == 0) {
-		std::cout << "ClapTrap " << _name << "has no energy to attack!" <<std::endl;
+		std::cout << "ClapTrap " << _name << " has no energy to attack!" <<std::endl;
 		return;
 	}
 	_energyPoints--;
@@ -76,4 +76,36 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	_energyPoints--;
 	std::cout << "ClapTrap " << _name << " repairs itself for " << amount
 			  << " health points." << std::endl;
+}
+
+void ClapTrap::setName(std::string name) {
+	_name = name;
+}
+
+void ClapTrap::setHp(int hp) {
+	_hp = hp;
+}
+
+void ClapTrap::setEnergyPoints(int energyPoints) {
+	_energyPoints = energyPoints;
+}
+
+void ClapTrap::setAttackDmg(int attackDmg) {
+	_attackDmg = attackDmg;
+}
+
+std::string ClapTrap::getName(void) const {
+	return _name;
+}
+
+int ClapTrap::getHp(void) const {
+	return _hp;
+}
+
+int ClapTrap::getEnergyPoints(void) const {
+	return _energyPoints;
+}
+
+int ClapTrap::getAttackDmg(void) const {
+	return _attackDmg;
 }
