@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/24 18:05:54 by rseelaen          #+#    #+#             */
-/*   Updated: 2024/05/25 13:00:50 by renato           ###   ########.fr       */
+/*   Created: 2024/05/25 12:47:59 by renato            #+#    #+#             */
+/*   Updated: 2024/05/25 13:04:36 by renato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef WRONGANIMAL_HPP
+#define WRONGANIMAL_HPP
 
 #include <string>
 
@@ -24,18 +24,18 @@
 #define WHITE "\x1b[1;37m"
 #define RESET "\033[0m"
 
-class Animal {
-	protected:
-		std::string _type;
-	public:
-	    Animal();
-		Animal(std::string type);
-	    Animal(const Animal& other);
-	    Animal& operator=(const Animal& other);
-	    virtual ~Animal();
-		
-		virtual void makeSound() const;
-		std::string getType() const;
+class WrongAnimal {
+    protected:
+        std::string _type;
+    public:
+        WrongAnimal();
+        WrongAnimal(std::string type);
+        WrongAnimal(const WrongAnimal& other);
+        WrongAnimal& operator=(const WrongAnimal& other);
+        virtual ~WrongAnimal();
+       
+        void makeSound() const;
+        std::string getType() const;
 };
 
-#endif // ANIMAL_HPP
+#endif // WRONGANIMAL_HPP

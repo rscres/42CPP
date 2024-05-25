@@ -1,23 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: renato <renato@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/24 21:38:45 by renato            #+#    #+#             */
+/*   Updated: 2024/05/25 13:03:40 by renato           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Cat.hpp"
+#include <iostream>
 
-Cat::Cat() {
-    // Initialization code here
+Cat::Cat() : Animal("Cat") {
+    std::cout << MAGENTA "Cat default constructor" RESET << std::endl;
 }
 
-Cat::Cat(const Cat& other) {
-    // Copy data from 'other' to this object
+Cat::Cat(const Cat& other) : Animal(other) {
+    std::cout << MAGENTA "Cat copy constructor" RESET << std::endl;
+    this->operator=(other);
 }
 
 Cat& Cat::operator=(const Cat& other) {
-    if (this != &other) {
-        // Free existing resources (if any)
-
-        // Copy data from 'other' to this object
-    }
+    this->_type = other._type;
     return *this;
 }
 
 Cat::~Cat() {
-    // Cleanup code here
+    std::cout << MAGENTA "Cat default destructor" RESET << std::endl;
+}
+
+void Cat::makeSound() const {
+    std::cout << MAGENTA "Meoow!" RESET << std::endl;
 }
