@@ -2,7 +2,7 @@
 CC = c++
 
 # program name
-NAME = animal
+NAME = brain
 
 # compiler flags
 CFLAGS  = -g -Wall -Wextra -Werror -std=c++98
