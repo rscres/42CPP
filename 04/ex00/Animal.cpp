@@ -4,7 +4,7 @@
 
 Animal::Animal() {
     std::cout << BLUE "Animal default constructor" RESET << std::endl;
-    _type = "";
+    _type = "Animal";
 }
 
 Animal::Animal(std::string type) {
