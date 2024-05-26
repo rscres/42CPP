@@ -12,8 +12,6 @@ SRC =	main.cpp \
 		AAnimal.cpp \
 		Dog.cpp \
 		Cat.cpp	\
-		WrongCat.cpp \
-		WrongAnimal.cpp \
 		Brain.cpp
 
 # build directory
