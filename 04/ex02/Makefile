@@ -18,14 +18,17 @@ SRC =	main.cpp \
 BUILD_DIR = build
 
 # obj files
-OBJ = $(addprefix $(BUILD_DIR)/,$(SRC:.cpp=.o))
+OBJ = $(patsubst %.cpp,$(BUILD_DIR)/%.o,$(SRC))
 
-all: $(NAME)
 
-$(NAME): obj_dir $(OBJ)
+all: obj_dir $(NAME)
+
+$(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-obj_dir:
+obj_dir: $(BUILD_DIR)
+
+$(BUILD_DIR):
 	@if [ ! -d "$(BUILD_DIR)" ]; then \
 		mkdir -p $(BUILD_DIR); \
 	fi
