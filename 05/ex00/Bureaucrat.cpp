@@ -2,6 +2,8 @@
 #include "Bureaucrat.hpp"
 #include <ostream>
 
+//Constructors
+
 Bureaucrat::Bureaucrat() {}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
@@ -24,6 +26,18 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
 
 Bureaucrat::~Bureaucrat() {}
 
+//Exception functions
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return "Grade too high";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return "Grade too low";
+}
+
+//Member functions
+
 int Bureaucrat::getGrade() const {
 	return _grade;
 }
@@ -43,6 +57,8 @@ void Bureaucrat::decreaseGrade() {
 		throw GradeTooLowException();
 	_grade++;
 }
+
+//Operators
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& o) {
 	return out << o.getName() << ", bureaucrat grade " << o.getGrade() << ".";
