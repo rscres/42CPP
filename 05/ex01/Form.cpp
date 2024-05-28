@@ -34,6 +34,7 @@ Form& Form::operator=(const Form& other) {
 		const_cast<int&>(_gradeToExec) = other.getGradeToExec();
 		_isSigned = other.getIsSigned();
     }
+	//return *new Form(other);
     return *this;
 }
 
