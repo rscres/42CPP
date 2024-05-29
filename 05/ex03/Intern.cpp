@@ -24,19 +24,18 @@ AForm* Intern::makeForm(std::string form, std::string target) {
     }
     switch (form_num) {
         case PRESIDENTIAL:
-            std::cout << "PresidentialPardonForm successfully created" << std::endl;
             newForm = new PresidentialPardonForm(target);
             break;
         case ROBOTOMY:
-            std::cout << "RobotomyRequestForm successfully created" << std::endl;
             newForm = new RobotomyRequestForm(target);
             break;
-        case SHRUBBERY:
-            std::cout << "ShrubberyCreationForm successfully created" << std::endl;
+        case SHRUBBERY:     
             newForm = new ShrubberyCreationForm(target);
             break;
         default:
             std::cerr << "Invalid form name" << std::endl;
+            return NULL;
     }
+    std::cout << "Intern successfully created " << form << std::endl;
     return newForm;
 }

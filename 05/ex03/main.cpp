@@ -30,6 +30,10 @@ int main(void) { //redo this
     AForm *form3 = jmilson.makeForm("ShrubberyCreationForm", "groovy_grove");
     AForm *form4 = jmilson.makeForm("ShrubberyCreationForm", "groovy_grove");
 
+    soninha.executeForm(*form2);
+    soninha.signForm(*form2);
+    soninha.executeForm(*form2);
+
     delete form1;
     delete form2;
     delete form3;
