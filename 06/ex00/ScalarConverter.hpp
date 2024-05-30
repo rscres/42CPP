@@ -13,6 +13,13 @@ enum etypes {
     IMPOSSIBLE
 };
 
+union uconv {
+    char c;
+    int i;
+    float f;
+    double d;
+};
+
 class ScalarConverter {
     private:
         ScalarConverter(); // Private constructor
@@ -25,11 +32,8 @@ class ScalarConverter {
         static void convert(std::string const& str);
 };
 
-void printChar(std::string input);
-void printInt(std::string input);
-void printFloat(std::string input);
-void printDouble(std::string input);
 void printInfNan(std::string input);
+void printValues(int type, std::string input);
 
 
 #endif //SCALARCONVERTER_HPP

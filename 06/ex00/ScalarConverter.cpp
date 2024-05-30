@@ -29,13 +29,14 @@ int getType(std::string input) {
     else if (input.find('.') != std::string::npos &&
         input.find('.') == input.find_last_of('.')
         && input.at(input.size() - 1) == 'f'
-        && input.find_first_not_of("0123456789."))
+        && input.find_first_not_of("0123456789.") == input.size() - 1)
         return FLOAT;
     else if (input.find('.') != std::string::npos &&
         input.find('.') == input.find_last_of('.')
-        && input.find_first_not_of("0123456789."))
+        && input.find_first_not_of("0123456789.") == std::string::npos)
         return DOUBLE;
     else if (input.compare("nan") == 0 || input.compare("-nan") == 0
+		|| input.compare("nanf") == 0 || input.compare("-nanf") == 0
         || input.compare("inff") == 0 || input.compare("-inff") == 0
         || input.compare("inf") == 0 || input.compare("-inf") == 0)
         return INFNAN;
@@ -43,18 +44,13 @@ int getType(std::string input) {
 }
 
 void ScalarConverter::convert(const std::string& input) {
-    switch (getType(input)) {
+	int type = getType(input);
+    switch (type) {
     case CHAR:
-        printChar(input);
-        break;
     case INT:
-        printInt(input);
-        break;
     case FLOAT:
-        printFloat(input);
-        break;
     case DOUBLE:
-        printDouble(input);
+        printValues(type, input);
         break;
     case INFNAN:
         printInfNan(input);
