@@ -2,8 +2,6 @@
 #include "ScalarConverter.hpp"
 #include <iostream>
 #include <string>
-#include <limits>
-#include <cmath>
 
 ScalarConverter::ScalarConverter() {}
 
