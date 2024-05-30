@@ -8,16 +8,17 @@
 #include <cstddef>
 
 Base * generate(void) {
-    Base *newBase;
-	static bool first = true;
+    Base *newBase = NULL;
+	static bool runSrand = true;
 
-	if (first) {
-    	std::srand(std::time(0));
-		first = false;
+	if (runSrand) {
+		std::srand(std::time(0));
+		runSrand = false;
 	}
 
-	switch(std::rand() % 3) {
-    case 0:
+	int randomNum = std::rand() % 3;
+	switch(randomNum) {
+	case 0:
         std::cout << "Created class A" << std::endl;
         newBase = new A;
 		break;
@@ -34,25 +35,44 @@ Base * generate(void) {
 }
 
 void identify(Base* p) {
-    if (dynamic_cast<A*>(p) != nullptr)
+	if (p == NULL) {
+		std::cout << "Pointer is NULL" << std::endl;
+		return;
+	}
+    if (dynamic_cast<A*>(p) != NULL)
         std::cout << "Instance is of class A" << std::endl;
-    else if (dynamic_cast<B*>(p) != nullptr)
+    else if (dynamic_cast<B*>(p) != NULL)
         std::cout << "Instance is of class B" << std::endl;
-    else if (dynamic_cast<C*>(p) != nullptr)
+    else if (dynamic_cast<C*>(p) != NULL)
         std::cout << "Instance is of class C" << std::endl;
 	else
-		std::cout << "Invalid input" << std::endl;
+		std::cout << "Invalid class" << std::endl;
 }
 
 void identify(Base& p) {
-    if (dynamic_cast<A*>(&p) != nullptr)
-        std::cout << "Instance is of class A" << std::endl;
-    else if (dynamic_cast<B*>(&p) != nullptr)
-        std::cout << "Instance is of class B" << std::endl;
-    else if (dynamic_cast<C*>(&p) != nullptr)
-        std::cout << "Instance is of class C" << std::endl;
-	else
-		std::cout << "Invalid input" << std::endl;
+	try {
+		A& ptr = dynamic_cast<A&>(p);
+		(void)ptr;
+		std::cout << "Instance is of class A" << std::endl;
+		return;
+	} catch (std::exception &e) {
+			try {
+			B& ptr = dynamic_cast<B&>(p);
+			(void)ptr;
+			std::cout << "Instance is of class B" << std::endl;
+			return;
+		} catch (std::exception &e) {
+			try {
+				C& ptr = dynamic_cast<C&>(p);
+				(void)ptr;
+				std::cout << "Instance is of class C" << std::endl;
+				return;
+			} catch (std::exception &e) {
+				std::cerr << "Error: Invalid class" << std::endl;
+				return;
+			}
+		}
+	}
 }
 
 int main() {
