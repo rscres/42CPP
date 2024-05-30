@@ -42,6 +42,7 @@ clean:
 	rm -rf $(BUILD_DIR)
 
 fclean: clean
+	rm *_shrubbery
 	rm -rf $(NAME)
 
 re: fclean all

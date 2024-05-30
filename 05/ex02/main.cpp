@@ -5,21 +5,24 @@
 #include "PresidentialPardonForm.hpp"
 #include <iostream>
 
-int main(void) { //redo this
-    Bureaucrat soninha("Soninha", 2);
-    Bureaucrat flaviano("Flaviano", 120);
+int main(void) {
+    Bureaucrat zaphod("Zaphod", 1);
+    Bureaucrat arthur("Arthur", 120);
 
-    PresidentialPardonForm pardon("Rods");
-    RobotomyRequestForm robForm("Moulinette");
-    ShrubberyCreationForm shrubs("groovy_grove");
+    PresidentialPardonForm pardon("Dolphin");
+    RobotomyRequestForm robForm("C3P0");
+    ShrubberyCreationForm shrubs("garden_planet");
 
-    flaviano.signForm(pardon);
-    soninha.executeForm(pardon);
-    soninha.signForm(pardon);
-    soninha.executeForm(pardon);
-    soninha.signForm(robForm);
-    soninha.executeForm(robForm);
-    soninha.signForm(shrubs);
-    soninha.executeForm(shrubs);
+    arthur.signForm(pardon);
+    zaphod.executeForm(pardon);
+    zaphod.signForm(pardon);
+    zaphod.executeForm(pardon);
+    
+	zaphod.signForm(robForm);
+	arthur.executeForm(robForm);
+    zaphod.executeForm(robForm);
+    
+	arthur.signForm(shrubs);
+    arthur.executeForm(shrubs);
 }
 

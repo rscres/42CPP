@@ -34,7 +34,6 @@ Form& Form::operator=(const Form& other) {
 		const_cast<int&>(_gradeToExec) = other.getGradeToExec();
 		_isSigned = other.getIsSigned();
     }
-	//return *new Form(other);
     return *this;
 }
 
@@ -51,6 +50,7 @@ const char* Form::GradeTooLowException::what() const throw() {
 const char* Form::FormAlreadySignedException::what() const throw() {
 	return "form is already signed";
 }
+
 //Member functions
 
 void Form::beSigned(Bureaucrat bureaucrat) {

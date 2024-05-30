@@ -7,38 +7,41 @@
 #include <iostream>
 
 int main(void) { //redo this
-    Bureaucrat soninha("Soninha", 2);
-    Bureaucrat flaviano("Flaviano", 120);
+	Bureaucrat zaphod("Zaphod", 1);
+    Bureaucrat arthur("Arthur", 120);
 
-    PresidentialPardonForm pardon("Rods");
-    RobotomyRequestForm robForm("Moulinette");
-    ShrubberyCreationForm shrubs("groovy_grove");
+    PresidentialPardonForm pardon("Dolphin");
+    RobotomyRequestForm robForm("C3P0");
+    ShrubberyCreationForm shrubs("garden_planet");
 
-    flaviano.signForm(pardon);
-    soninha.executeForm(pardon);
-    soninha.signForm(pardon);
-    soninha.executeForm(pardon);
-    soninha.signForm(robForm);
-    soninha.executeForm(robForm);
-    soninha.signForm(shrubs);
-    soninha.executeForm(shrubs);
+    arthur.signForm(pardon);
+    zaphod.executeForm(pardon);
+    zaphod.signForm(pardon);
+    zaphod.executeForm(pardon);
+    
+	zaphod.signForm(robForm);
+	arthur.executeForm(robForm);
+    zaphod.executeForm(robForm);
+    
+	arthur.signForm(shrubs);
+    arthur.executeForm(shrubs);
 
-    Intern jmilson;
+    Intern mob;
 
-    AForm *form1 = jmilson.makeForm("PresidentialPardonForm", "Rods");
-    AForm *form2 = jmilson.makeForm("RobotomyRequestForm", "Moulinette");
-    AForm *form3 = jmilson.makeForm("ShrubberyCreationForm", "groovy_grove");
-    AForm *form4 = jmilson.makeForm("ShrubberyCreationForm", "groovy_grove");
+    AForm *form1 = mob.makeForm("PresidentialPardonForm", "Trillian");
+    AForm *form2 = mob.makeForm("RobotomyRequestForm", "Marvin");
+    AForm *form3 = mob.makeForm("ShrubberyCreationForm", "groovy_grove");
+    AForm *form4 = mob.makeForm("Whatever", "groovy_grove");
 
-    soninha.executeForm(*form2);
-    soninha.signForm(*form2);
-    soninha.executeForm(*form2);
+    zaphod.executeForm(*form2);
+    zaphod.signForm(*form2);
+    zaphod.executeForm(*form2);
 
     delete form1;
     delete form2;
     delete form3;
     delete form4;
 
-    jmilson.makeForm("Eject from Spaceship", "The Impostor");
+    mob.makeForm("Eject from Spaceship", "The Impostor");
 }
 

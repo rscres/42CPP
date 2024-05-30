@@ -6,7 +6,7 @@
 /*   By: rseelaen <rseelaen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 16:25:13 by rseelaen          #+#    #+#             */
-/*   Updated: 2024/05/28 17:45:36 by rseelaen         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:02:25 by rseelaen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ int main(void) {
 	
 	std::cout << "Invalid grade tests: " << std::endl;
 	try {
+		std::cout << "Test grade 0" << std::endl;
 		Bureaucrat bob("Bob", 0);
 	} catch (std::exception &e) {
 		std::cerr << "Caught Exception: " << e.what() << std::endl;
 	}
 
 	try {
+		std::cout << "Test grade 152" << std::endl;
 		Bureaucrat bob("Bob", 152);
 	} catch (std::exception &e) {
 		std::cerr << "Caught Exception: " << e.what() << std::endl;
