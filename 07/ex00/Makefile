@@ -5,7 +5,7 @@ CC = c++
 NAME = template
 
 # compiler flags
-CFLAGS  = -g3 -Wall -Wextra -Werror
+CFLAGS  = -g3 -Wall -Wextra -Werror -std=c++98
 
 # source files
 SRC =	main.cpp

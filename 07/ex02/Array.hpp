@@ -10,7 +10,7 @@ class Array {
         T* arr;
 
     public:
-        Array() : len(0), arr(nullptr) {}
+        Array() : len(0), arr(NULL) {}
        
         Array(size_t n) : len(n) {
             arr = new T[len];

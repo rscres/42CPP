@@ -5,7 +5,7 @@ CC = c++
 NAME = iter
 
 # compiler flags
-CFLAGS  = -g3 -Wall -Wextra -Werror
+CFLAGS  = -g3 -Wall -Wextra -Werror -std=c++98
 
 # source files
 SRC =	main.cpp

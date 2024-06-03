@@ -5,10 +5,10 @@ CC = c++
 NAME = array
 
 # compiler flags
-CFLAGS  = -g3 -Wall -Wextra -Werror
+CFLAGS  = -g3 -Wall -Wextra -Werror -std=c++98
 
 # source files
-SRC =	main.cpp
+SRC = $(wildcard *.cpp)
 
 # build directory
 BUILD_DIR = build
