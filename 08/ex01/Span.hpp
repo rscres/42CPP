@@ -25,13 +25,15 @@ class Span {
         Span& operator=(const Span& other);
         ~Span();
 
+        typedef std::vector<int>::iterator iterator;
+
         unsigned int getSize() const ;
         std::vector<int> getVector() const ;
 
         void addNumber(int num);
         int shortestSpan() const ;
         int longestSpan() const ;
-        void fillSpan(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+        void fillSpan(iterator begin, iterator end);
         void fillSpan(unsigned int size);
 };
 

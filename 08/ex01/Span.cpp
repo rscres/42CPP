@@ -5,19 +5,15 @@
 
 Span::Span() : _size(0) {}
 
-Span::Span(unsigned int N) : _size(N) {
-    // _vector.resize(N);
-}
+Span::Span(unsigned int N) : _size(N) {}
 
 Span::Span(const Span& other) : _size(other._size) {
-    // _vector.resize(_size);
     _vector = other._vector;
 }
 
 Span& Span::operator=(const Span& other) {
     if (this != &other) {
         _size = other._size;
-        // _vector.resize(_size);
         _vector = other._vector;
     }
     return *this;
@@ -73,8 +69,11 @@ int Span::longestSpan() const {
     return max - min;
 }
 
-void Span::fillSpan(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
+void Span::fillSpan(iterator begin, iterator end) { //is not adding any elements
     try {
+        if (std::distance(begin, end) > _size) {
+            throw std::out_of_range("Size is too big");
+        }
         while (begin != end) {
             addNumber(*begin++);
         }
