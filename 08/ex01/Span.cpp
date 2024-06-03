@@ -72,3 +72,29 @@ int Span::longestSpan() const {
     int min = *std::min_element(_vector.begin(), _vector.end());
     return max - min;
 }
+
+void Span::fillSpan(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
+    try {
+        while (begin != end) {
+            addNumber(*begin++);
+        }
+    } catch (std::exception &e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+}
+
+void Span::fillSpan(unsigned int size) {
+    try {
+        if (size > _size) {
+            throw std::out_of_range("Size is too big");
+        }
+        srand(time(0));
+
+        int max = size * 10;
+        for (unsigned int i = 0; i < size; i++) {
+            addNumber(rand() % max);
+        }
+    } catch (std::exception &e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+}

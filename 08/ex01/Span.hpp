@@ -31,6 +31,8 @@ class Span {
         void addNumber(int num);
         int shortestSpan() const ;
         int longestSpan() const ;
+        void fillSpan(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+        void fillSpan(unsigned int size);
 };
 
 #endif // SPAN_HPP
