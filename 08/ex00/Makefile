@@ -1,6 +1,6 @@
 # compiler options
 CC = c++
-CFLAGS  = -g3 -Wall -Wextra -Werror
+CFLAGS  = -g3 -Wall -Wextra -Werror -std=c++98
 
 # program name
 NAME = easyfind
