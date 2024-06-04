@@ -1,16 +1,16 @@
 #include "iter.hpp"
 #include <iostream>
 
-char toUpper(char element) {
-    return (std::toupper(element));
+void toUpper(char &element) {
+    element = std::toupper(element);
 }
 
-int times(int element) {
-    return (element * element);
+void times(int &element) {
+    element *= element;
 }
 
-int sum(int element) {
-    return (element + element);
+void sum(int &element) {
+    element += element;
 }
 
 int main() {
