@@ -16,12 +16,9 @@ class RPN {
         RPN& operator=(const RPN& other);
         ~RPN();
 
-        void pushNumber(int number);
-        void pushOperator(char op);
         void calculate();
-        int getResult() const;
 
-        void getInput(std::string input);
+        void execInput(std::string input);
         bool validateInput(std::string input);
 };
 
