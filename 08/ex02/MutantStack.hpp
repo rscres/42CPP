@@ -1,3 +1,6 @@
+#ifndef MUTANTSTACK_HPP
+#define MUTANTSTACK_HPP
+
 #include <stack>
 
 template<typename T>
@@ -14,6 +17,7 @@ class MutantStack : public std::stack<T> {
         MutantStack& operator=(const MutantStack & other) {
             if (this != &other)
                 this = other;
+                this->c = other.c;
             return *this;
         }
 
@@ -27,3 +31,5 @@ class MutantStack : public std::stack<T> {
             return this->c.end();
         }
 };
+
+#endif // MUTANTSTACK_HPP
