@@ -6,21 +6,21 @@
 template<typename T>
 class Array {
     private:
-        size_t len;
+        unsigned int len;
         T* arr;
 
     public:
-        Array() : len(0), arr(NULL) {}
+        Array() : len(0), arr(new T[0]) {}
        
-        Array(size_t n) : len(n) {
+        Array(unsigned int n) : len(n) {
             arr = new T[len];
-            for (size_t i = 0; i < len; i++)
+            for (unsigned int i = 0; i < len; i++)
                 arr[i] = T();
         }
        
         Array(const Array & other) : len(other.len) {
             arr = new T[len];
-            for (size_t i = 0; i < len; i++)
+            for (unsigned int i = 0; i < len; i++)
                 arr[i] = other.arr[i];
         }
        
@@ -34,7 +34,7 @@ class Array {
                 delete[] arr;
                 len = other.len;
                 arr = new T[len];
-                for (size_t i = 0; i < len; i++)
+                for (unsigned int i = 0; i < len; i++)
                     arr[i] = other.arr[i];
             }
             return *this;
@@ -43,13 +43,13 @@ class Array {
         T& operator[](int index) const {
             if (arr == NULL)
                 throw std::out_of_range("Array is empty");
-            if (index < 0 || (size_t)index >= len) {
+            if (index < 0 || (unsigned int)index >= len) {
                 throw std::out_of_range("Array index out of range");
             }
             return arr[index];
         }
 
-        size_t size() const {
+        unsigned int size() const {
             return len;
         }
 };
