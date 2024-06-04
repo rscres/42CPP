@@ -2,18 +2,17 @@
 #define EASYFIND_HPP
 
 #include <iostream>
+#include <algorithm>
 
 template<typename T>
-int easyfind(T& container, int n) {
-    typename T::iterator i;
-    for (i = container.begin(); i != container.end(); i++) {
-        if (*i == n) {
-            std::cout << "Found " << n << std::endl;
-            return 0;
-        }
-    }
-    std::cerr << "Error: number not found" << std::endl;
-    return 1;
+bool easyfind(T& container, int n) {
+    typename T::iterator it = std::find(container.begin(), container.end(), n);
+	if (it == container.end()) {
+		std::cerr << "Error: number not found" << std::endl;
+		return false;
+	}
+	std::cout << "Found " << *it << std::endl;
+	return true;
 }
 
 #endif //EASYFIND_HPP
