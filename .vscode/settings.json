@@ -49,6 +49,9 @@
 		"ctime": "cpp",
 		"optional": "cpp",
 		"iomanip": "cpp",
-		"ranges": "cpp"
+		"ranges": "cpp",
+		"cstring": "cpp",
+		"list": "cpp",
+		"map": "cpp"
 	}
 }
