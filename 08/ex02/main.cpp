@@ -4,6 +4,7 @@
 #include <list>
 
 int main() {
+	 std::cout << "---------------MSTACK-----------------" << std::endl;
     MutantStack<int> mstack;
     mstack.push(5);
     mstack.push(17);
@@ -25,7 +26,7 @@ int main() {
     }
     std::stack<int> s(mstack);
 
-    std::cout << "--------------------------------" << std::endl;
+    std::cout << "---------------LIST-----------------" << std::endl;
 
     std::list<int> l1;
     l1.push_back(5);

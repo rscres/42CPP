@@ -2,15 +2,16 @@
 #define ITER_HPP
 
 #include <cstddef>
-#include <iostream>
 
 template<typename T>
-void printArr(T t) {
-    std::cout << t << std::endl;
+void iter(T const *array, size_t size,void func(T const &element)) {
+    for (size_t i = 0; i < size; i++) {
+        func(array[i]);
+    }
 }
 
-template<typename T, typename F>
-void iter(T& array, size_t size, F func) {
+template<typename T>
+void iter(T *array, size_t size,void func(T &element)) {
     for (size_t i = 0; i < size; i++) {
         func(array[i]);
     }

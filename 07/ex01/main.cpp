@@ -1,46 +1,74 @@
 #include "iter.hpp"
 #include <iostream>
 
-// void printInt(int i) {
-//     std::cout << i << std::endl;
-// }
-
-// int main() {
-//     int arr[5] = {1, 2, 3, 4, 5};
-//     ::iter(arr, 5, &printInt);
-    
-//     std::string arr2[3] = {"hello", "there", "mate"};
-//     ::iter(arr2, 3, ::printArr<std::string>);
-// }
-
-class Awesome
-{
-  public:
-    Awesome( void ) : _n( 42 ) { return; }
-    int get( void ) const { return this->_n; }
-  private:
-    int _n;
-};
-
-std::ostream & operator<<( std::ostream & o, Awesome const & rhs )
-{
-  o << rhs.get();
-  return o;
+void toUpper(char &element) {
+    element = std::toupper(element);
 }
 
-template< typename T >
-void print( T& x )
-{
-  std::cout << x << std::endl;
-  return;
+void times(int &element) {
+    element *= element;
+}
+
+void sum(int &element) {
+    element += element;
 }
 
 int main() {
-  int tab[] = { 0, 1, 2, 3, 4 };
-  Awesome tab2[5];
 
-  iter( tab, 5, print<const int> );
-  iter( tab2, 5, print<Awesome> );
 
-  return 0;
+	{
+		std::cout << "---------INT---------" << std::endl;
+		int array[] = {1, 2, 3, 4, 5};
+
+		std::cout << "Int array before:\t";
+		for (int i = 0; i < 5; i++) {
+			std::cout << array[i] << " ";
+		}
+		std::cout << std::endl;
+
+		iter(array, 5, sum);
+
+		std::cout << "Int array after:\t";
+		for (int i = 0; i < 5; i++) {
+			std::cout << array[i] << " ";
+		}
+		std::cout << std::endl;
+	}
+	{
+        std::cout << "---------STRING---------" << std::endl;
+        char *ptr;
+        unsigned int size = 11;
+
+        std::string henlo = "Hello world!";
+        ptr = (char *)henlo.c_str();
+
+        std::cout << "Original string:\t" << ptr << std::endl;
+
+        iter(ptr, size, toUpper);
+
+        std::cout << "String after iter:\t" << ptr << std::endl;
+    }
+    {
+        std::cout << "----------INT-------------" << std::endl;
+        unsigned int size = 10;
+        int *array = new int[size];
+
+        for (int i = 0; (unsigned int)i < size; i++)
+            array[i] = i + 1;
+
+        std::cout << "Int array before:\t";
+        for (unsigned int i = 0; i < size; i++)
+            std::cout << array[i] << " ";
+        std::cout << std::endl;
+
+        iter(array, size, times);
+
+        std::cout << "Int array after:\t";
+        for (unsigned int i = 0; i < size; i++)
+            std::cout << array[i] << " ";
+        std::cout << std::endl;
+
+        delete[] array;
+    }
+  	return 0;
 }
