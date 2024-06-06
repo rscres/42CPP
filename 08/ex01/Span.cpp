@@ -90,7 +90,7 @@ void Span::fillSpan(unsigned int size) {
         }
         srand(time(0));
 
-        int max = size * 10;
+        int max = size * 20;
         for (unsigned int i = 0; i < size; i++) {
             addNumber(rand() % max);
         }
