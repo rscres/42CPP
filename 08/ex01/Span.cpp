@@ -2,6 +2,7 @@
 #include "Span.hpp"
 #include <iostream>
 #include <algorithm>
+#include <climits>
 
 Span::Span() : _size(0) {}
 
@@ -49,16 +50,16 @@ void Span::addNumber(int num) {
 }
 
 int Span::shortestSpan() const {
-    std::vector<int>::const_iterator min = std::min_element(_vector.begin(), _vector.end());
-    std::vector<int>::const_iterator second_min = std::max_element(_vector.begin(), _vector.end());; 
-    for (std::vector<int>::const_iterator it = _vector.begin(); it != _vector.end(); it++) {
-        if (*it == *min) {
-            continue;
-        }
-        if (*it < *second_min)
-            second_min = it;
+    if (_vector.size() < 2)
+        throw NotEnoughElementsException();
+    std::vector<int> sorted = _vector;
+    std::sort(sorted.begin(), sorted.end());
+    int span = INT_MAX;
+    for (unsigned int i = 0; i < sorted.size() - 1; i++) { //change to iterator
+        if (sorted[i + 1] - sorted[i] < span)
+            span = sorted[i + 1] - sorted[i];
     }
-    return *second_min - *min;
+    return span;
 }
 
 int Span::longestSpan() const {
