@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <cstdlib>
+#include <algorithm>
 
 BitcoinExchange::BitcoinExchange() {}
 
@@ -113,7 +114,7 @@ void BitcoinExchange::readInputFile(std::string filename) {
         }
         if (isDateValid(date)) {
             double price = findPrice(date);
-            double amount = std::atof(line.substr(13).c_str());
+            double amount = std::atof(line.substr(line.find_first_of("0123456789+", line.find("|"))).c_str()); // skip date and find first number
             if (price == -1) {
                 std::cerr << "No data for date " << date << std::endl;
             } else if (isValueValid(amount)) {
