@@ -55,7 +55,7 @@ int Span::shortestSpan() const {
     std::vector<int> sorted = _vector;
     std::sort(sorted.begin(), sorted.end());
     int span = INT_MAX;
-    for (unsigned int i = 0; i < sorted.size() - 1; i++) { //change to iterator
+    for (unsigned int i = 0; i < sorted.size() - 1; i++) {
         if (sorted[i + 1] - sorted[i] < span)
             span = sorted[i + 1] - sorted[i];
     }
@@ -70,7 +70,7 @@ int Span::longestSpan() const {
     return max - min;
 }
 
-void Span::fillSpan(iterator begin, iterator end) { //is not adding any elements
+void Span::fillSpan(iterator begin, iterator end) {
     try {
         if (std::distance(begin, end) > _size) {
             throw std::out_of_range("Size is too big");
