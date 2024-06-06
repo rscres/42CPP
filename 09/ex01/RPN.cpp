@@ -44,8 +44,9 @@ void RPN::calculate() {
 
 void RPN::execInput(std::string input) {
     do {
-        while (input[0] == ' ') {
-            input.erase(0, 1);
+        if (input[0] == ' ') {
+            input.erase(0, input.find_first_not_of(" "));
+            continue;
         }
 
         if (_numbers.size() >= 2 && _operators.size() > 0) {
@@ -60,6 +61,7 @@ void RPN::execInput(std::string input) {
                 input.erase(0, 1);
             }
         }
+
     } while (input.size() > 0);
     if (_numbers.size() >= 2 && _operators.size() > 0) {
         calculate();
