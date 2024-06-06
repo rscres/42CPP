@@ -33,6 +33,50 @@ class Pmergeme {
             return container;
         }
 
+        template <typename T>
+        T merge(T &left, T &right) {
+            T temp;
+            typename T::iterator it1 = left.begin();
+            typename T::iterator it2 = right.begin();
+            while (it1 != left.end() && it2 != right.end()) {
+                if (*it1 < *it2) {
+                    temp.push_back(*it1);
+                    it1++;
+                } else {
+                    temp.push_back(*it2);
+                    it2++;
+                }
+            }
+            while (it1 != left.end()) {
+                temp.push_back(*it1);
+                it1++;
+            }
+            while (it2 != right.end()) {
+                temp.push_back(*it2);
+                it2++;
+            }
+            return temp;
+        }
+
+        template <typename T>
+        void sort(T &container, int start, int end) {
+            if (start >= end)
+                return;
+
+            if (end - start == 1) {
+                if (container[start] > container[end])
+                    std::swap(container[start], container[end]);
+                return;
+            }
+
+            int mid = (start + end) / 2;
+            T left(container.begin() + start, container.begin() + mid + 1);
+            T right(container.begin() + mid + 1, container.begin() + end + 1);
+            sort(left, start, mid);
+            sort(right, mid + 1, end);
+            container = merge(left, right);
+        }
+
         bool verifyInput(std::string input);
 
     public:
@@ -41,8 +85,8 @@ class Pmergeme {
         Pmergeme& operator=(const Pmergeme& other);
         ~Pmergeme();
 
-        void merge();
         int initContainers(std::string input);
+        void sortContainers();
 };
 
 #endif // PMERGEME_HPP

@@ -7,6 +7,6 @@ int main(int argc, char *argv[]) {
         return 1;
     }
     Pmergeme pmergeme(argv[1]);
-    // pmergeme.merge();
+    pmergeme.sortContainers();
     return 0;
 }

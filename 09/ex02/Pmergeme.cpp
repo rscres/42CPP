@@ -51,3 +51,14 @@ int Pmergeme::initContainers(std::string input) {
     std::cout << std::endl;
     return 0;
 }
+
+void Pmergeme::sortContainers() {
+    sort<std::vector<int> >(_vector, 0, _vector.size() - 1);
+    sort<std::deque<int> >(_deque, 0, _deque.size() - 1);
+    for (std::vector<int>::iterator it = _vector.begin(); it != _vector.end(); it++)
+        std::cout << *it << " ";
+    std::cout << std::endl;
+    for (std::deque<int>::iterator it = _deque.begin(); it != _deque.end(); it++)
+        std::cout << *it << " ";
+    std::cout << std::endl;
+}
