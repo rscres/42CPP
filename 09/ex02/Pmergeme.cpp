@@ -2,11 +2,18 @@
 #include "Pmergeme.hpp"
 #include <string>
 #include <iostream>
+#include <algorithm>
+#include <ctime>
+
+//CONSTRUCTORS
 
 Pmergeme::Pmergeme() {}
 
-Pmergeme::Pmergeme(std::string input) {
-    initContainers(input);
+Pmergeme::Pmergeme(std::vector<std::string> input) {
+    _input = input;
+    if (initContainers(input))
+        throw InvalidArgumentsException();
+    leftover = false;
 }
 
 Pmergeme::Pmergeme(const Pmergeme& other) {
@@ -22,43 +29,64 @@ Pmergeme& Pmergeme::operator=(const Pmergeme& other) {
     return *this;
 }
 
-Pmergeme::~Pmergeme() {
+//DESTRUCTORS
 
-}
+Pmergeme::~Pmergeme() {}
 
-bool Pmergeme::verifyInput(std::string input) {
-    if (input.find_first_not_of("0123456789 +-") != std::string::npos)
-            return false;
-    for (std::string::size_type i = 0; i < input.size(); i++) {
-        if (input[i] == '-' && ((i != 0 && input[i - 1] != ' ') || !std::isdigit(input[i + 1])))
-            return false;
+//PRIVATE FUNCTIONS
+
+bool Pmergeme::verifyInput(std::vector<std::string> input) {
+    for (std::vector<std::string>::iterator it = input.begin(); it != input.end(); it++) {
+        for (std::string::iterator it2 = it->begin(); it2 != it->end(); it2++) {
+            if (!isdigit(*it2))
+                return false;
+        }
     }
     return true;
 }
 
-int Pmergeme::initContainers(std::string input) {
+int Pmergeme::initContainers(std::vector<std::string> input) {
     if (!verifyInput(input)) {
-        std::cerr << "Error: Invalid input" << std::endl;
+        std::cout << "Invalid" << std::endl;
         return 1;
     }
     _vector = populateContainer<std::vector<int> >(input);
     _deque = populateContainer<std::deque<int> >(input);
-    for (std::vector<int>::iterator it = _vector.begin(); it != _vector.end(); it++)
-        std::cout << *it << " ";
-    std::cout << std::endl;
-    for (std::deque<int>::iterator it = _deque.begin(); it != _deque.end(); it++)
-        std::cout << *it << " ";
-    std::cout << std::endl;
     return 0;
 }
 
-void Pmergeme::sortContainers() {
-    sort<std::vector<int> >(_vector, 0, _vector.size() - 1);
-    sort<std::deque<int> >(_deque, 0, _deque.size() - 1);
-    for (std::vector<int>::iterator it = _vector.begin(); it != _vector.end(); it++)
-        std::cout << *it << " ";
-    std::cout << std::endl;
-    for (std::deque<int>::iterator it = _deque.begin(); it != _deque.end(); it++)
-        std::cout << *it << " ";
-    std::cout << std::endl;
+//EXCEPTIONS
+
+const char* Pmergeme::InvalidArgumentsException::what() const throw() {
+    return "Invalid arguments";
+}
+
+//PUBLIC FUNCTIONS
+
+void Pmergeme::fordJohnson() {
+    
+    std::cout << "Before: ";
+    printContainer(_input);
+
+    std::clock_t start = std::clock();
+
+    getPairs<std::vector<int> >(_vector, _vectorTemp);
+    sortPairs<std::vector<std::pair<int, int> > >(_vectorTemp);
+    sort<std::vector<int>, std::vector<std::pair<int, int> > >( _vectorSorted, _vectorTemp);
+
+    double duration_vec = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+    
+    start = std::clock();
+
+    getPairs<std::deque<int> >(_deque, _dequeTemp);
+    sortPairs<std::deque<std::pair<int, int> > >(_dequeTemp);
+    sort<std::deque<int>, std::deque<std::pair<int, int> > >(_dequeSorted, _dequeTemp);
+
+    double duration_deq = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+    
+    std::cout << "After: ";
+    printContainer(_vectorSorted);
+
+    std::cout << "Time to process a range of " << _input.size() << " with std::vector : " << duration_vec * 1000 << "ms" << std::endl; 
+    std::cout << "Time to process a range of " << _input.size() << " with std::deque : " << duration_deq * 1000 << "ms" << std::endl; 
 }
