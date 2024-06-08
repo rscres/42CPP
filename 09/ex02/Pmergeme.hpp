@@ -23,6 +23,7 @@ class Pmergeme {
         std::vector<std::pair<int, int> > _vectorTemp;
         std::deque<std::pair<int, int> > _dequeTemp;
         bool leftover;
+        int leftover_value;
 
         template <typename T>
         T populateContainer(std::vector<std::string> input) {
@@ -37,23 +38,25 @@ class Pmergeme {
 
         template <typename T, typename P>
         void getPairs(T &container, P &pair) {
-            typename T::iterator it = container.begin();
-            typename P::iterator pair_it = pair.begin();
-            typename T::iterator it2 = it + 1;
-            while (it < container.end() - 1 && it2 < container.end()) {
-                it2 = it + 1;
-                if (*it > *it2) {
-                    std::swap(*it, *it2);
-                }
-                pair.push_back(std::make_pair(*it, *it2));
-                it += 2;
-                pair_it++;
-            }
             if (container.size() % 2 != 0) {
                 // Process the last element
-                it = container.end() - 1;
-                pair.push_back(std::make_pair(*it, *it));
+                leftover_value = *(container.end() - 1);
                 leftover = true;
+            }
+            typename T::iterator it = container.begin();
+            while (it < container.end()) {
+                typename T::iterator it2 = it + 1;
+                if (it2 != container.end()) {
+                    if (*it > *it2) {
+                        std::swap(*it, *it2);
+                    }
+                    pair.push_back(std::make_pair(*it, *it2));
+                    it += 2;
+                } else {
+                    // Handle the case where there's only one element left
+                    pair.push_back(std::make_pair(*it, *it));
+                    it++;
+                }
             }
         }
 
@@ -64,17 +67,19 @@ class Pmergeme {
 
         template <typename T, typename P>
         void sort(T &sorted, P &pair) {
-            //insert largest element of each pair in ascending order in sorted
-            
+            //insert largest element of each pair in ascending order in sorted 
             typename P::iterator it = pair.begin();
             while (it != pair.end()) {
                 sorted.push_back(it->second);
                 it++;
             }
-            if (leftover)
-                pair.pop_back();
+
             //insert smallest element of first pair in sorted
-            sorted.insert(sorted.begin(), pair.begin()->first);
+            if (leftover && pair.begin()->first <= leftover_value) {
+                pair.erase(find(pair.begin(), pair.end(), std::make_pair(leftover_value, leftover_value)));
+                sorted.insert(std::lower_bound(sorted.begin(), sorted.end(), pair.begin()->first), pair.begin()->first);
+            } else
+                sorted.insert(sorted.begin(), pair.begin()->first);
 
             //insert smallest element of each pair in sorted
             int prev_jacob = 1;
@@ -85,10 +90,8 @@ class Pmergeme {
                 int jacob = getJacobsthal(jacob_i++);
                 if (jacob > static_cast<int>(pair.size()))
                     jacob = pair.size();
-                while (jacob != prev_jacob) {
-                    if (nbrLeft <= 0)
-                        break;
-                    *it = pair.at(jacob - 1);    
+                while (jacob != prev_jacob && nbrLeft > 0) {
+                    *it = pair.at(jacob - 1);
                     it2 = find(sorted.begin(), sorted.end(), it->second);
                     while(it2 != sorted.begin() && it->first < *it2)
                         it2--;
@@ -110,10 +113,6 @@ class Pmergeme {
             std::cout << std::endl;
         }
 
-        class InvalidArgumentsException : std::exception {
-            virtual const char* what() const throw() ;
-        };
-
         bool verifyInput(std::vector<std::string> input);
         int initContainers(std::vector<std::string> input);
 
@@ -125,6 +124,11 @@ class Pmergeme {
         ~Pmergeme();
 
         void fordJohnson();
+        
+        class InvalidArgumentsException : std::exception {
+            public:
+                virtual const char* what() const throw() ;
+        };
 };
 
 #endif // PMERGEME_HPP
