@@ -107,14 +107,18 @@ void BitcoinExchange::readInputFile(std::string filename) {
 
     std::string line;
     while (std::getline(file, line)) {
+        if (line.find("|") == std::string::npos) {
+            std::cerr << "Error: bad input => " << line << std::endl;
+            continue;
+        }
         std::string date = line.substr(0, 10);
         if (date.length() != 10 || date[4] != '-' || date[7] != '-') {
-            std::cerr << "Invalid date format" << std::endl;
+            std::cerr << "Error: invalid date format" << std::endl;
             continue;
         }
         if (isDateValid(date)) {
             double price = findPrice(date);
-            double amount = std::atof(line.substr(line.find_first_of("0123456789+", line.find("|"))).c_str()); // skip date and find first number
+            double amount = std::atof(line.substr(line.find_first_of("0123456789+-", line.find("|"))).c_str()); // skip date and find first number
             if (price == -1) {
                 std::cerr << "No data for date " << date << std::endl;
             } else if (isValueValid(amount)) {
@@ -123,7 +127,7 @@ void BitcoinExchange::readInputFile(std::string filename) {
                 std::cout << date << " => " << amount << " => " << (price * amount) << std::endl;
             }
         } else {
-            std::cerr << "Invalid date" << std::endl;
+            std::cerr << "Error: invalid date" << std::endl;
         }
     }
     file.close();
