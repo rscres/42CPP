@@ -67,7 +67,7 @@ void RPN::execInput(std::string input) {
         calculate();
         std::cout << _numbers.top() << std::endl;
     } else
-        std::cout << "Error" << std::endl;
+        std::cout << "Error: wrong amount of operators" << std::endl;
 }
 
 bool RPN::validateInput(std::string input) {
