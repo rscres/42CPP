@@ -7,11 +7,11 @@ hpp_template = """
 #define {0}_HPP
 
 class {1} {{
-public:
-    {1}();
-    {1}(const {1}& other);
-    {1}& operator=(const {1}& other);
-    ~{1}();
+    public:
+        {1}();
+        {1}(const {1}& other);
+        {1}& operator=(const {1}& other);
+        ~{1}();
 }};
 
 #endif // {0}_HPP
