@@ -18,6 +18,6 @@ C++ and the principles of Object Oriented Programming. Each lists builds on what
 | [06](https://github.com/rscres/42CPP/tree/main/06) | Type casting in C++                                          | &check;        |
 | [07](https://github.com/rscres/42CPP/tree/main/07) | Template functions and classes                               | &check;        |
 | [08](https://github.com/rscres/42CPP/tree/main/08) | Templated containers, iterators and algorithms               | &check;        |
-| [09](https://github.com/rscres/42CPP/tree/main/09) | Containers                                                   | in progress... |
+| [09](https://github.com/rscres/42CPP/tree/main/09) | Containers                                                   | &check;        |
 
 </div>
