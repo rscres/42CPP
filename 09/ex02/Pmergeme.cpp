@@ -65,7 +65,7 @@ const char* Pmergeme::InvalidArgumentsException::what() const throw() {
 
 void Pmergeme::fordJohnson() {
     
-    std::cout << "Before: ";
+    std::cout << std::endl << "Before: ";
     printContainer(_input);
 
     std::clock_t start = std::clock();
@@ -84,7 +84,7 @@ void Pmergeme::fordJohnson() {
 
     double duration_deq = (std::clock() - start) / (double)CLOCKS_PER_SEC;
     
-    std::cout << "After: ";
+    std::cout << std::endl << "After: ";
     printContainer(_vectorSorted);
 
     std::cout << "Time to process a range of " << _input.size() << " with std::vector : " << duration_vec * 1000 << "ms" << std::endl; 
