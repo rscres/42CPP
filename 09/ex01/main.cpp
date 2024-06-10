@@ -11,6 +11,10 @@ int main(int argc, char *argv[]) {
         std::cout << "Error" << std::endl;
         return 1;
     }
-    rpn.execInput(argv[1]);
-    return 0;
+	try {
+    	rpn.execInput(argv[1]);
+	} catch (std::exception &e) {
+		std::cout << "Error: " << e.what() << std::endl;
+	}
+	return 0;
 }

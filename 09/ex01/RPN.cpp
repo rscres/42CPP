@@ -38,6 +38,8 @@ void RPN::calculate() {
     } else if (op == '*') {
         _numbers.push(a * b);
     } else if (op == '/') {
+		if (b == 0)
+			throw std::runtime_error("Error: Couldn't divide by 0.");
         _numbers.push(a / b);
     }
 }
